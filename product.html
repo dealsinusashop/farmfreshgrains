@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — FarmFreshGrains</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span class="top-bar-left">🌾 Farm Fresh · Pesticide Free · Directly From Our Fields</span>
+    <div class="top-bar-links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="store-locator.html">Store Locator</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="main-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon">🌾</div>
+      <div class="logo-text">
+        <span class="logo-name">FarmFreshGrains</span>
+        <span class="logo-tagline">Pure · Natural · Traditional</span>
+      </div>
+    </a>
+
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search products…" autocomplete="off" onkeydown="if(event.key==='Enter'){window.location='index.html?q='+this.value}">
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="currency-badge" id="currencyBadge">
+        <span id="currencyFlag">🌐</span>
+        <span id="currencyLabel">Loading…</span>
+      </div>
+      <button class="icon-btn" id="loginBtn" title="Account">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="icon-label" id="loginLabel">Login</span>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" title="Cart">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none">0</span>
+        <span class="icon-label">Cart</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <a href="index.html" id="breadcrumbCat">Products</a>
+    <span>›</span>
+    <span id="breadcrumbProduct">Product</span>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL -->
+<main class="product-detail-page">
+  <div class="container">
+    <div class="product-detail-grid" id="productDetailGrid">
+      <!-- Injected by JS -->
+      <div class="loading-spinner">Loading product…</div>
+    </div>
+
+    <!-- RELATED PRODUCTS -->
+    <section class="related-products">
+      <h2 class="section-title">More from this Category</h2>
+      <div class="products-grid" id="relatedGrid"></div>
+    </section>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">🌾 FarmFreshGrains</div>
+      <p>Pure, natural, and traditionally cultivated produce — directly from our family farmland to your kitchen.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="store-locator.html">Store Locator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="index.html?cat=rice">Rice</a>
+      <a href="index.html?cat=dhal">Dhal & Sweeteners</a>
+      <a href="index.html?cat=pickles">Pickles</a>
+      <a href="index.html?cat=flours">Flours</a>
+      <a href="index.html?cat=tea">Tea</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📧 info@farmfreshgrains.com</p>
+      <p>📞 +91 98765 43210</p>
+      <p>📍 Tamil Nadu, India</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 FarmFreshGrains. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button onclick="toggleCart()" class="cart-close">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <div style="font-size:48px">🛒</div>
+      <p>Your cart is empty</p>
+    </div>
+    <div id="cartItems"></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Total:</span>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+    <button class="btn-checkout">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal" style="display:none">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('login')">Login</button>
+      <button class="modal-tab" onclick="switchTab('register')">Register</button>
+    </div>
+    <div id="loginForm">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" id="loginEmail">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" id="loginPassword">
+      </div>
+      <button class="btn-primary full-width" onclick="doLogin()">Login to Account</button>
+    </div>
+    <div id="registerForm" style="display:none">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" id="regName">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" id="regEmail">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="Create a password" id="regPassword">
+      </div>
+      <button class="btn-primary full-width" onclick="doRegister()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script src="js/product-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — FarmFreshGrains</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .contact-hero { background: linear-gradient(135deg, var(--green-dark), var(--green)); color: #fff; padding: 72px 40px; text-align: center; }
+  .contact-hero h1 { font-family: 'Playfair Display',serif; font-size: 44px; margin-bottom: 14px; }
+  .contact-hero p { font-size: 17px; opacity: 0.85; }
+  .contact-body { max-width: 1100px; margin: 56px auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: start; }
+  .contact-info h2 { font-family: 'Playfair Display',serif; font-size: 28px; color: var(--green-dark); margin-bottom: 24px; }
+  .contact-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start; }
+  .contact-card .cc-icon { font-size: 28px; flex-shrink: 0; }
+  .contact-card h4 { font-size: 14px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px; }
+  .contact-card p, .contact-card a { font-size: 15px; color: var(--text); font-weight: 500; }
+  .contact-form { background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; padding: 36px; }
+  .contact-form h2 { font-family: 'Playfair Display',serif; font-size: 26px; color: var(--green-dark); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:700px){ .contact-body{grid-template-columns:1fr;gap:32px;} .form-row{grid-template-columns:1fr;} }
+  textarea { width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:10px; font-size:14.5px; font-family:'Nunito',sans-serif; outline:none; color:var(--text); background:var(--cream2); resize:vertical; min-height:120px; }
+  textarea:focus { border-color:var(--green-light); background:var(--white); }
+  .btn-submit { background:var(--green); color:#fff; border:none; cursor:pointer; padding:14px 32px; border-radius:10px; font-size:15px; font-weight:700; font-family:'Nunito',sans-serif; transition:var(--transition); margin-top:8px; }
+  .btn-submit:hover { background:var(--green-dark); }
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span class="top-bar-left">🌾 Farm Fresh · Pesticide Free · Directly From Our Fields</span>
+    <div class="top-bar-links"><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="store-locator.html">Store Locator</a></div>
+  </div>
+</div>
+<header id="main-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html"><div class="logo-icon">🌾</div><div class="logo-text"><span class="logo-name">FarmFreshGrains</span><span class="logo-tagline">Pure · Natural · Traditional</span></div></a>
+    <div class="header-actions" style="margin-left:auto">
+      <button class="icon-btn" id="loginBtn"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="icon-label" id="loginLabel">Login</span></button>
+      <button class="icon-btn" id="cartBtn"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count" id="cartCount" style="display:none">0</span><span class="icon-label">Cart</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="contact-hero">
+  <h1>Get In Touch</h1>
+  <p>Have a question about our products? We'd love to hear from you.</p>
+</div>
+
+<div class="contact-body">
+  <div class="contact-info">
+    <h2>Contact Information</h2>
+    <div class="contact-card"><div class="cc-icon">📧</div><div><h4>Email Us</h4><a href="mailto:info@farmfreshgrains.com">info@farmfreshgrains.com</a></div></div>
+    <div class="contact-card"><div class="cc-icon">📞</div><div><h4>Call Us</h4><p>+91 98765 43210</p><p style="font-size:12px;color:var(--text-muted);margin-top:4px">Mon–Sat, 9am–6pm IST</p></div></div>
+    <div class="contact-card"><div class="cc-icon">📍</div><div><h4>Farm Address</h4><p>FarmFreshGrains<br>Tamil Nadu, India — 600001</p></div></div>
+    <div class="contact-card"><div class="cc-icon">📦</div><div><h4>Orders & Shipping</h4><p>Free delivery above ₹500 / $25<br>Typically delivered in 3–5 business days</p></div></div>
+  </div>
+
+  <div class="contact-form">
+    <h2>Send Us a Message</h2>
+    <div class="form-row">
+      <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full name" id="cName"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com" id="cEmail"></div>
+    </div>
+    <div class="form-group"><label>Subject</label><input type="text" placeholder="How can we help?" id="cSubject"></div>
+    <div class="form-group"><label>Message</label><textarea id="cMessage" placeholder="Write your message here…"></textarea></div>
+    <button class="btn-submit" onclick="submitContact()">Send Message →</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><div class="footer-logo">🌾 FarmFreshGrains</div><p>Pure, natural, and traditionally cultivated produce.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="store-locator.html">Store Locator</a></div>
+    <div class="footer-col"><h4>Shop</h4><a href="index.html?cat=rice">Rice</a><a href="index.html?cat=dhal">Dhal & Sweeteners</a><a href="index.html?cat=pickles">Pickles</a></div>
+    <div class="footer-col"><h4>Contact</h4><p>📧 info@farmfreshgrains.com</p><p>📞 +91 98765 43210</p><p>📍 Tamil Nadu, India</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 FarmFreshGrains. All rights reserved.</p></div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>Your Cart</h3><button onclick="toggleCart()" class="cart-close">✕</button></div>
+  <div class="cart-body" id="cartBody"><div class="cart-empty" id="cartEmpty"><div style="font-size:48px">🛒</div><p>Your cart is empty</p></div><div id="cartItems"></div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Total:</span><strong id="cartTotal">₹0</strong></div><button class="btn-checkout">Proceed to Checkout →</button></div>
+</div>
+<div class="modal-overlay" id="loginModal" style="display:none">
+  <div class="modal"><button class="modal-close" onclick="closeLoginModal()">✕</button><div class="modal-tabs"><button class="modal-tab active" onclick="switchTab('login')">Login</button><button class="modal-tab" onclick="switchTab('register')">Register</button></div><div id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail"></div><div class="form-group"><label>Password</label><input type="password" id="loginPassword"></div><button class="btn-primary full-width" onclick="doLogin()">Login</button></div><div id="registerForm" style="display:none"><div class="form-group"><label>Name</label><input type="text" id="regName"></div><div class="form-group"><label>Email</label><input type="email" id="regEmail"></div><div class="form-group"><label>Password</label><input type="password" id="regPassword"></div><button class="btn-primary full-width" onclick="doRegister()">Register</button></div></div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+<script>
+function submitContact() {
+  const name = document.getElementById('cName').value;
+  const email = document.getElementById('cEmail').value;
+  const msg = document.getElementById('cMessage').value;
+  if (!name || !email || !msg) { showToast('Please fill in all required fields', 'error'); return; }
+  showToast('✅ Message sent! We\'ll get back to you soon.');
+  document.getElementById('cName').value = '';
+  document.getElementById('cEmail').value = '';
+  document.getElementById('cSubject').value = '';
+  document.getElementById('cMessage').value = '';
+}
+</script>
+</body>
+</html>

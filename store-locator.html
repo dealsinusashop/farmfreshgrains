@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Locator — FarmFreshGrains</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .sl-hero { background: linear-gradient(135deg, var(--green-dark), var(--green)); color: #fff; padding: 72px 40px; text-align: center; }
+  .sl-hero h1 { font-family: 'Playfair Display',serif; font-size: 44px; margin-bottom: 14px; }
+  .sl-hero p { font-size: 17px; opacity: 0.85; }
+  .sl-body { max-width: 1100px; margin: 56px auto; padding: 0 32px; }
+  .sl-body h2 { font-family: 'Playfair Display',serif; font-size: 28px; color: var(--green-dark); margin-bottom: 28px; }
+  .stores-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 24px; margin-bottom: 56px; }
+  .store-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 24px; transition: var(--transition); }
+  .store-card:hover { box-shadow: var(--shadow); border-color: var(--green-pale); }
+  .store-card h3 { font-family: 'Playfair Display',serif; font-size: 18px; color: var(--green-dark); margin-bottom: 12px; }
+  .store-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 6px; }
+  .store-badge { display: inline-block; background: var(--green-pale); color: var(--green-dark); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 12px; margin-bottom: 10px; }
+  .online-cta { background: linear-gradient(135deg, var(--green), var(--green-mid)); color: #fff; border-radius: 20px; padding: 48px; text-align: center; margin-bottom: 56px; }
+  .online-cta h2 { font-family: 'Playfair Display',serif; font-size: 30px; margin-bottom: 12px; }
+  .online-cta p { font-size: 16px; opacity: 0.85; margin-bottom: 24px; }
+  .btn-shop-now { display: inline-block; background: var(--amber); color: #fff; padding: 14px 32px; border-radius: 30px; font-size: 15px; font-weight: 700; transition: var(--transition); }
+  .btn-shop-now:hover { background: var(--amber-light); transform: translateY(-2px); }
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span class="top-bar-left">🌾 Farm Fresh · Pesticide Free · Directly From Our Fields</span>
+    <div class="top-bar-links"><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="store-locator.html">Store Locator</a></div>
+  </div>
+</div>
+<header id="main-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html"><div class="logo-icon">🌾</div><div class="logo-text"><span class="logo-name">FarmFreshGrains</span><span class="logo-tagline">Pure · Natural · Traditional</span></div></a>
+    <div class="header-actions" style="margin-left:auto">
+      <button class="icon-btn" id="loginBtn"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="icon-label" id="loginLabel">Login</span></button>
+      <button class="icon-btn" id="cartBtn"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cart-count" id="cartCount" style="display:none">0</span><span class="icon-label">Cart</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="sl-hero"><h1>Store Locator</h1><p>Find FarmFreshGrains products near you — or order online for doorstep delivery.</p></div>
+
+<div class="sl-body">
+  <div class="online-cta">
+    <h2>🚚 Shop Online Anytime</h2>
+    <p>Order from anywhere in India or the USA — we deliver fresh, farm-direct produce right to your door.</p>
+    <a href="index.html" class="btn-shop-now">Shop Online Now →</a>
+  </div>
+
+  <h2>📍 Physical Store Locations</h2>
+  <div class="stores-grid">
+    <div class="store-card">
+      <span class="store-badge">🏪 Farm Store</span>
+      <h3>FarmFreshGrains Farm Store</h3>
+      <p>📍 Our Farm, Tamil Nadu 600001</p>
+      <p>📞 +91 98765 43210</p>
+      <p>🕐 Mon–Sun: 7am – 6pm</p>
+      <p style="color:var(--green);font-weight:700;font-size:13px;margin-top:10px">All products available</p>
+    </div>
+    <div class="store-card">
+      <span class="store-badge">🏬 Partner Store</span>
+      <h3>Chennai Organic Market</h3>
+      <p>📍 T. Nagar, Chennai 600017</p>
+      <p>📞 +91 44 4567 8900</p>
+      <p>🕐 Mon–Sat: 9am – 8pm</p>
+    </div>
+    <div class="store-card">
+      <span class="store-badge">🏬 Partner Store</span>
+      <h3>Coimbatore Natural Foods</h3>
+      <p>📍 RS Puram, Coimbatore 641002</p>
+      <p>📞 +91 422 234 5678</p>
+      <p>🕐 Mon–Sat: 8:30am – 7:30pm</p>
+    </div>
+    <div class="store-card">
+      <span class="store-badge">🇺🇸 USA Partner</span>
+      <h3>Tamil Nadu Grocery</h3>
+      <p>📍 Fremont, CA 94538, USA</p>
+      <p>📞 +1 510 555 0123</p>
+      <p>🕐 Daily: 10am – 8pm PST</p>
+    </div>
+  </div>
+  <p style="color:var(--text-muted);font-size:14px;text-align:center;padding-bottom:40px">Want to stock our products in your store? <a href="contact.html" style="color:var(--green);font-weight:700">Contact us →</a></p>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col"><div class="footer-logo">🌾 FarmFreshGrains</div><p>Pure, natural, and traditionally cultivated produce.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="about.html">About Us</a><a href="contact.html">Contact Us</a><a href="store-locator.html">Store Locator</a></div>
+    <div class="footer-col"><h4>Shop</h4><a href="index.html?cat=rice">Rice</a><a href="index.html?cat=dhal">Dhal & Sweeteners</a><a href="index.html?cat=pickles">Pickles</a></div>
+    <div class="footer-col"><h4>Contact</h4><p>📧 info@farmfreshgrains.com</p><p>📞 +91 98765 43210</p><p>📍 Tamil Nadu, India</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 FarmFreshGrains. All rights reserved.</p></div>
+</footer>
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>Your Cart</h3><button onclick="toggleCart()" class="cart-close">✕</button></div>
+  <div class="cart-body" id="cartBody"><div class="cart-empty" id="cartEmpty"><div style="font-size:48px">🛒</div><p>Your cart is empty</p></div><div id="cartItems"></div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Total:</span><strong id="cartTotal">₹0</strong></div><button class="btn-checkout">Proceed to Checkout →</button></div>
+</div>
+<div class="modal-overlay" id="loginModal" style="display:none">
+  <div class="modal"><button class="modal-close" onclick="closeLoginModal()">✕</button><div class="modal-tabs"><button class="modal-tab active" onclick="switchTab('login')">Login</button><button class="modal-tab" onclick="switchTab('register')">Register</button></div><div id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail"></div><div class="form-group"><label>Password</label><input type="password" id="loginPassword"></div><button class="btn-primary full-width" onclick="doLogin()">Login</button></div><div id="registerForm" style="display:none"><div class="form-group"><label>Name</label><input type="text" id="regName"></div><div class="form-group"><label>Email</label><input type="email" id="regEmail"></div><div class="form-group"><label>Password</label><input type="password" id="regPassword"></div><button class="btn-primary full-width" onclick="doRegister()">Register</button></div></div>
+</div>
+<script src="js/products.js"></script><script src="js/app.js"></script>
+</body>
+</html>

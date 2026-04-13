@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmFreshGrains — Pure From Our Farm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- TOP UTILITY BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span class="top-bar-left">🌾 Farm Fresh · Pesticide Free · Directly From Our Fields</span>
+    <div class="top-bar-links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="store-locator.html">Store Locator</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
+<header id="main-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon">🌾</div>
+      <div class="logo-text">
+        <span class="logo-name">FarmFreshGrains</span>
+        <span class="logo-tagline">Pure · Natural · Traditional</span>
+      </div>
+    </a>
+
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search rice, dal, pickles…" autocomplete="off">
+        <button class="search-clear" id="searchClear" style="display:none">✕</button>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="currency-badge" id="currencyBadge">
+        <span id="currencyFlag">🌐</span>
+        <span id="currencyLabel">Loading…</span>
+      </div>
+
+      <button class="icon-btn" id="loginBtn" title="Account">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="icon-label" id="loginLabel">Login</span>
+      </button>
+
+      <button class="icon-btn cart-btn" id="cartBtn" title="Cart">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none">0</span>
+        <span class="icon-label">Cart</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAVIGATION TABS -->
+<nav class="cat-nav" id="catNav">
+  <div class="cat-nav-inner">
+    <a class="cat-tab active" data-cat="all" href="#">All Products</a>
+    <!-- Tabs are injected by JS from products.js -->
+  </div>
+</nav>
+
+<!-- HERO BANNER -->
+<section class="hero" id="heroSection">
+  <div class="hero-content">
+    <p class="hero-badge">🌿 Direct Farm to Doorstep</p>
+    <h1>Taste the Purity of<br><span>Traditional Grains</span></h1>
+    <p class="hero-sub">Organically cultivated heirloom varieties, ancient grains, cold-pressed oils, and traditional condiments — straight from our family farm.</p>
+    <a href="#products" class="btn-hero">Shop Now →</a>
+  </div>
+  <div class="hero-img-area">
+    <img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9b1c2?w=600&q=80" alt="Farm fresh grains" class="hero-img">
+  </div>
+</section>
+
+<!-- SEARCH RESULTS BANNER (hidden normally) -->
+<div class="search-results-bar" id="searchResultsBar" style="display:none">
+  <div class="container">
+    <span id="searchResultsText"></span>
+    <button onclick="clearSearch()">✕ Clear Search</button>
+  </div>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<main class="products-section" id="products">
+  <div class="container">
+    <div id="categoryTitle" class="section-title">All Products</div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Injected by JS -->
+    </div>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <div class="empty-icon">🔍</div>
+      <p>No products found matching your search.</p>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo">🌾 FarmFreshGrains</div>
+      <p>Pure, natural, and traditionally cultivated produce — directly from our family farmland to your kitchen.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="store-locator.html">Store Locator</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="#" data-cat="rice" class="footer-cat-link">Rice</a>
+      <a href="#" data-cat="dhal" class="footer-cat-link">Dhal & Sweeteners</a>
+      <a href="#" data-cat="pickles" class="footer-cat-link">Pickles</a>
+      <a href="#" data-cat="flours" class="footer-cat-link">Flours</a>
+      <a href="#" data-cat="tea" class="footer-cat-link">Tea</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📧 info@farmfreshgrains.com</p>
+      <p>📞 +91 98765 43210</p>
+      <p>📍 Tamil Nadu, India</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 FarmFreshGrains. All rights reserved. | Lovingly grown & packed.</p>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button onclick="toggleCart()" class="cart-close">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <div style="font-size:48px">🛒</div>
+      <p>Your cart is empty</p>
+      <small>Add some farm-fresh items!</small>
+    </div>
+    <div id="cartItems"></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Total:</span>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+    <button class="btn-checkout">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal" style="display:none">
+  <div class="modal">
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('login')">Login</button>
+      <button class="modal-tab" onclick="switchTab('register')">Register</button>
+    </div>
+    <div id="loginForm">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" id="loginEmail">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" id="loginPassword">
+      </div>
+      <button class="btn-primary full-width" onclick="doLogin()">Login to Account</button>
+      <p class="form-link">Forgot password? <a href="#">Reset here</a></p>
+    </div>
+    <div id="registerForm" style="display:none">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" id="regName">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@example.com" id="regEmail">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="Create a password" id="regPassword">
+      </div>
+      <button class="btn-primary full-width" onclick="doRegister()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
