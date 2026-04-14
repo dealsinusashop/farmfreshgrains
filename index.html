@@ -6,11 +6,174 @@
 <title>FarmFreshGrains — Pure From Our Farm</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<style>
+:root{--green-dark:#1b4332;--green:#2d6a4f;--green-mid:#40916c;--green-light:#52b788;--green-pale:#d8f3dc;--green-bg:#f0faf4;--amber:#e76f51;--amber-light:#f4a261;--amber-pale:#fef0e7;--brown:#8b5e3c;--cream:#fefae0;--cream2:#f9f4ec;--cream3:#f2ebe0;--text:#1a1a1a;--text-muted:#5a5a5a;--text-light:#8a8a8a;--border:#e0d8ce;--border-light:#ede8e0;--white:#ffffff;--radius:12px;--shadow-sm:0 1px 6px rgba(0,0,0,0.07);--shadow:0 3px 16px rgba(0,0,0,0.09);--shadow-lg:0 8px 32px rgba(0,0,0,0.13);--transition:all 0.22s ease}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.6}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+.top-bar{background:var(--green-dark);color:#a8d8b4;font-size:12.5px;padding:8px 32px}
+.top-bar-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.top-bar-links{display:flex;gap:4px}
+.top-bar-links a{color:#a8d8b4;padding:3px 12px;border-radius:20px;font-size:12.5px;font-weight:500;transition:var(--transition)}
+.top-bar-links a:hover{background:rgba(255,255,255,0.12);color:#fff}
+#main-header{background:var(--white);border-bottom:1.5px solid var(--border);position:sticky;top:0;z-index:300;box-shadow:var(--shadow-sm)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 32px;height:70px;display:flex;align-items:center;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-icon{font-size:28px;line-height:1}
+.logo-text{display:flex;flex-direction:column}
+.logo-name{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--green-dark);letter-spacing:-0.3px;line-height:1.1}
+.logo-tagline{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--green-mid);font-weight:600}
+.search-bar-wrap{flex:1;max-width:420px;margin:0 8px}
+.search-bar{display:flex;align-items:center;background:var(--cream2);border:1.5px solid var(--border);border-radius:28px;padding:9px 16px;gap:8px;transition:var(--transition)}
+.search-bar:focus-within{border-color:var(--green-light);box-shadow:0 0 0 3px rgba(82,183,136,0.15);background:var(--white)}
+.search-bar svg{color:var(--text-muted);flex-shrink:0}
+.search-bar input{border:none;background:transparent;outline:none;font-size:14px;width:100%;color:var(--text);font-family:'Nunito',sans-serif}
+.header-actions{display:flex;align-items:center;gap:4px;margin-left:auto}
+.currency-badge{display:flex;align-items:center;gap:5px;background:var(--green-pale);border:1px solid var(--green-light);color:var(--green-dark);font-size:12px;font-weight:700;padding:5px 10px;border-radius:20px;letter-spacing:0.5px}
+.icon-btn{background:none;border:none;cursor:pointer;color:var(--text);padding:8px 10px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative;transition:var(--transition);min-width:52px}
+.icon-btn:hover{background:var(--cream2)}
+.icon-label{font-size:10.5px;font-weight:600;color:var(--text-muted)}
+.cart-count{position:absolute;top:4px;right:6px;background:var(--amber);color:#fff;font-size:10px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--white)}
+.cat-nav{background:var(--green);position:sticky;top:70px;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.cat-nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;scrollbar-width:none}
+.cat-nav-inner::-webkit-scrollbar{display:none}
+.cat-tab{color:rgba(255,255,255,0.8);font-size:13.5px;font-weight:600;padding:14px 22px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:var(--transition);display:block;font-family:'Nunito',sans-serif}
+.cat-tab:hover,.cat-tab.active{color:#fff;border-bottom-color:var(--amber-light);background:rgba(255,255,255,0.1)}
+.hero{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 55%,var(--green-mid) 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:64px;gap:48px;overflow:hidden;position:relative}
+.hero-content{flex:1;max-width:520px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px}
+.hero h1{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;line-height:1.15;margin-bottom:16px}
+.hero h1 span{color:var(--amber-light)}
+.hero-sub{font-size:16px;opacity:0.85;line-height:1.7;margin-bottom:32px}
+.btn-hero{display:inline-block;background:var(--amber);color:#fff;padding:14px 32px;border-radius:30px;font-size:15px;font-weight:700;transition:var(--transition);box-shadow:0 4px 20px rgba(231,111,81,0.4)}
+.btn-hero:hover{background:var(--amber-light);transform:translateY(-2px)}
+.hero-img-area{flex-shrink:0;position:relative;z-index:1}
+.hero-img{width:380px;height:300px;object-fit:cover;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.products-section{padding:40px 0 72px}
+.section-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;color:var(--green-dark);margin-bottom:28px;padding-bottom:14px;border-bottom:2.5px solid var(--green-pale);position:relative}
+.section-title::after{content:'';position:absolute;bottom:-2.5px;left:0;width:60px;height:2.5px;background:var(--green-mid)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px}
+.product-card{background:var(--white);border:1.5px solid var(--border-light);border-radius:var(--radius);overflow:hidden;transition:var(--transition);cursor:pointer;box-shadow:var(--shadow-sm)}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--green-pale)}
+.product-card.sold-out{opacity:0.7;cursor:default}
+.product-card.sold-out:hover{transform:none}
+.product-img-wrap{position:relative;height:190px;overflow:hidden;background:var(--cream2)}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
+.product-card:hover .product-img-wrap img{transform:scale(1.06)}
+.sold-out-badge{position:absolute;top:10px;right:10px;background:#e53e3e;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:0.5px}
+.product-cat-tag{position:absolute;bottom:10px;left:10px;background:rgba(27,67,50,0.88);color:#fff;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:12px}
+.product-info{padding:14px 16px 16px}
+.product-id{font-size:11px;color:var(--text-light);font-weight:700;letter-spacing:0.5px;margin-bottom:4px}
+.product-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--green-dark);margin-bottom:6px;line-height:1.3}
+.product-desc-short{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin-bottom:12px}
+.product-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-light);padding-top:10px}
+.price-main{font-size:18px;font-weight:700;color:var(--green)}
+.price-unit{font-size:11.5px;color:var(--text-muted)}
+.price-sold{font-size:13px;color:#e53e3e;font-weight:700}
+.btn-add-card{background:var(--green);color:#fff;border:none;cursor:pointer;padding:7px 14px;border-radius:20px;font-size:12.5px;font-weight:700;font-family:'Nunito',sans-serif;transition:var(--transition)}
+.btn-add-card:hover{background:var(--green-dark);transform:scale(1.05)}
+.empty-state{display:flex;flex-direction:column;align-items:center;padding:80px 20px;color:var(--text-muted);text-align:center}
+.empty-icon{font-size:64px;margin-bottom:16px}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:800;display:flex;align-items:center;justify-content:center;padding:24px}
+.modal{background:var(--white);border-radius:20px;padding:36px;width:100%;max-width:400px;position:relative;box-shadow:var(--shadow-lg);animation:slideUp 0.25s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--cream2);border:1.5px solid var(--border);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
+.modal-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:24px}
+.modal-tab{flex:1;padding:10px;background:none;border:none;cursor:pointer;font-size:15px;font-weight:700;color:var(--text-muted);font-family:'Nunito',sans-serif;border-bottom:3px solid transparent;margin-bottom:-2px;transition:var(--transition)}
+.modal-tab.active{color:var(--green);border-bottom-color:var(--green)}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:700;color:var(--text-muted);margin-bottom:6px}
+.form-group input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14.5px;font-family:'Nunito',sans-serif;outline:none;color:var(--text);background:var(--cream2);transition:var(--transition)}
+.form-group input:focus{border-color:var(--green-light);background:var(--white)}
+.btn-primary{background:var(--green);color:#fff;border:none;cursor:pointer;padding:13px 24px;border-radius:10px;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;transition:var(--transition)}
+.btn-primary:hover{background:var(--green-dark)}
+.btn-primary.full-width{width:100%}
+/* CART */
+.cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:500}
+.cart-overlay.visible{display:block}
+.cart-sidebar{position:fixed;top:0;right:-420px;bottom:0;width:380px;background:var(--white);z-index:600;transition:right 0.3s ease;display:flex;flex-direction:column;box-shadow:-4px 0 40px rgba(0,0,0,0.15)}
+.cart-sidebar.open{right:0}
+.cart-header{padding:20px 24px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--green-dark);color:#fff}
+.cart-header h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:600}
+.cart-close{background:rgba(255,255,255,0.15);border:none;cursor:pointer;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;display:flex;align-items:center;justify-content:center}
+.cart-body{flex:1;overflow-y:auto;padding:16px}
+.cart-empty{display:flex;flex-direction:column;align-items:center;padding:60px 20px;text-align:center;color:var(--text-muted)}
+.cart-empty p{font-size:16px;font-weight:600;margin:10px 0 4px}
+.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border-light)}
+.cart-item img{width:64px;height:64px;object-fit:cover;border-radius:10px;flex-shrink:0;border:1px solid var(--border-light)}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:13.5px;font-weight:700;color:var(--green-dark);line-height:1.3;margin-bottom:3px}
+.cart-item-price{font-size:12px;color:var(--text-muted);margin-bottom:8px}
+.cart-qty-row{display:flex;align-items:center;gap:6px}
+.cart-qty-row button{width:26px;height:26px;border-radius:6px;border:1.5px solid var(--border);background:var(--cream2);cursor:pointer;font-size:16px;font-weight:500;color:var(--text);display:flex;align-items:center;justify-content:center}
+.cart-qty-row span{font-size:14px;font-weight:700;min-width:20px;text-align:center}
+.cart-remove{background:#fff5f5 !important;border-color:#fed7d7 !important;color:#c53030 !important;font-size:13px !important}
+.cart-item-total{font-size:14px;font-weight:700;color:var(--green);flex-shrink:0;align-self:center}
+.cart-footer{padding:16px 24px;border-top:2px solid var(--border);background:var(--cream2)}
+.cart-total{display:flex;justify-content:space-between;align-items:center;font-size:16px;color:var(--text-muted);margin-bottom:14px}
+.cart-total strong{font-size:24px;font-weight:700;color:var(--green-dark)}
+.btn-checkout{width:100%;padding:14px;border-radius:12px;background:var(--green);color:#fff;border:none;cursor:pointer;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif}
+/* TOAST */
+.ffg-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green-dark);color:#fff;padding:12px 24px;border-radius:30px;font-size:14px;font-weight:600;font-family:'Nunito',sans-serif;z-index:9999;transition:transform 0.3s ease,opacity 0.3s ease;opacity:0;white-space:nowrap;box-shadow:var(--shadow-lg)}
+.ffg-toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.ffg-toast.error{background:#c53030}
+/* FOOTER */
+.site-footer{background:var(--green-dark);color:rgba(255,255,255,0.75);padding:56px 32px 0}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:12px}
+.footer-col p{font-size:13.5px;line-height:1.7}
+.footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:#fff;font-weight:700;margin-bottom:14px}
+.footer-col a{display:block;font-size:13.5px;color:rgba(255,255,255,0.65);margin-bottom:8px;transition:var(--transition)}
+.footer-col a:hover{color:var(--amber-light)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:18px 0;text-align:center;font-size:12.5px;color:rgba(255,255,255,0.45)}
+/* PRODUCT DETAIL */
+.product-detail-page{padding:40px 0 72px}
+.product-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-bottom:72px}
+.detail-img-wrap{border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative;background:var(--cream2);aspect-ratio:4/3}
+.detail-img-wrap img{width:100%;height:100%;object-fit:cover}
+.sold-out-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;color:#fff;letter-spacing:3px}
+.detail-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.badge-green{background:var(--green-pale);color:var(--green-dark)}
+.badge-amber{background:var(--amber-pale);color:var(--brown)}
+.badge-brown{background:#f5ede2;color:#7c4a1e}
+.detail-item-id{font-size:12px;color:var(--text-light);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:10px}
+.detail-name{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--green-dark);line-height:1.2;margin-bottom:20px}
+.detail-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:28px;padding-bottom:24px;border-bottom:1.5px solid var(--border-light)}
+.detail-price{font-size:36px;font-weight:700;color:var(--green)}
+.detail-price.sold-out-price{color:#e53e3e;font-size:24px}
+.detail-unit{font-size:16px;color:var(--text-muted)}
+.detail-description,.detail-uses{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border-light)}
+.detail-description h3,.detail-uses h3{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:var(--green-mid);font-weight:700;margin-bottom:8px}
+.detail-description p,.detail-uses p{font-size:15px;color:var(--text-muted);line-height:1.75}
+.detail-add-cart{margin:24px 0}
+.qty-selector{display:flex;align-items:center;border:2px solid var(--border);border-radius:10px;overflow:hidden;width:fit-content;margin-bottom:16px}
+.qty-btn{background:var(--cream2);border:none;cursor:pointer;width:44px;height:44px;font-size:20px;font-weight:500;color:var(--text);transition:var(--transition)}
+.qty-btn:hover{background:var(--green-pale);color:var(--green)}
+.qty-selector input{width:60px;height:44px;border:none;text-align:center;font-size:17px;font-weight:700;color:var(--text);font-family:'Nunito',sans-serif;outline:none;background:var(--white);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border)}
+.detail-total-row{font-size:15px;color:var(--text-muted);margin-bottom:16px}
+.detail-total-row strong{font-size:22px;color:var(--green);margin-left:8px}
+.btn-add-to-cart{width:100%;padding:14px;border-radius:12px;background:var(--green);color:#fff;border:none;cursor:pointer;font-size:16px;font-weight:700;font-family:'Nunito',sans-serif;transition:var(--transition);margin-bottom:10px}
+.btn-add-to-cart:hover{background:var(--green-dark)}
+.btn-buy-now{width:100%;padding:14px;border-radius:12px;background:var(--white);color:var(--amber);border:2px solid var(--amber);cursor:pointer;font-size:16px;font-weight:700;font-family:'Nunito',sans-serif;transition:var(--transition)}
+.btn-buy-now:hover{background:var(--amber);color:#fff}
+.sold-out-notice{background:#fff5f5;border:1.5px solid #fed7d7;border-radius:12px;padding:20px;margin-top:20px;text-align:center}
+.delivery-chip{background:var(--green-bg);color:var(--green-dark);font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px;border:1px solid var(--green-pale);display:inline-block;margin:4px 4px 0 0}
+.breadcrumb-bar{background:var(--cream2);border-bottom:1px solid var(--border);padding:12px 32px;font-size:13px;color:var(--text-muted)}
+.breadcrumb-bar .container{display:flex;align-items:center;gap:8px}
+.breadcrumb-bar a{color:var(--green);font-weight:600}
+.related-section{margin-top:48px}
+@media(max-width:900px){.hero{flex-direction:column;padding:40px 32px;text-align:center}.hero h1{font-size:36px}.hero-img{width:100%;max-width:400px}.product-detail-grid{grid-template-columns:1fr;gap:32px}.footer-inner{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:640px){.top-bar-left{display:none}.header-inner{padding:0 16px}.hero{padding:32px 16px}.hero h1{font-size:28px}.container{padding:0 16px}.cat-nav-inner{padding:0 16px}.products-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}.footer-inner{grid-template-columns:1fr;gap:24px}.search-bar-wrap{display:none}.detail-name{font-size:26px}}
+</style>
 </head>
 <body>
 
-<!-- TOP UTILITY BAR -->
+<!-- TOP BAR -->
 <div class="top-bar">
   <div class="top-bar-inner">
     <span class="top-bar-left">🌾 Farm Fresh · Pesticide Free · Directly From Our Fields</span>
@@ -22,7 +185,7 @@
   </div>
 </div>
 
-<!-- MAIN HEADER -->
+<!-- HEADER -->
 <header id="main-header">
   <div class="header-inner">
     <a class="logo" href="index.html">
@@ -32,27 +195,19 @@
         <span class="logo-tagline">Pure · Natural · Traditional</span>
       </div>
     </a>
-
     <div class="search-bar-wrap">
       <div class="search-bar">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" id="searchInput" placeholder="Search rice, dal, pickles…" autocomplete="off">
-        <button class="search-clear" id="searchClear" style="display:none">✕</button>
       </div>
     </div>
-
     <div class="header-actions">
-      <div class="currency-badge" id="currencyBadge">
-        <span id="currencyFlag">🌐</span>
-        <span id="currencyLabel">Loading…</span>
-      </div>
-
-      <button class="icon-btn" id="loginBtn" title="Account">
+      <div class="currency-badge"><span id="currencyFlag">🌐</span><span id="currencyLabel">Loading…</span></div>
+      <button class="icon-btn" id="loginBtn">
         <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         <span class="icon-label" id="loginLabel">Login</span>
       </button>
-
-      <button class="icon-btn cart-btn" id="cartBtn" title="Cart">
+      <button class="icon-btn" id="cartBtn">
         <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cart-count" id="cartCount" style="display:none">0</span>
         <span class="icon-label">Cart</span>
@@ -61,48 +216,62 @@
   </div>
 </header>
 
-<!-- CATEGORY NAVIGATION TABS -->
-<nav class="cat-nav" id="catNav">
-  <div class="cat-nav-inner">
+<!-- CATEGORY NAV -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner" id="catNav">
     <a class="cat-tab active" data-cat="all" href="#">All Products</a>
-    <!-- Tabs are injected by JS from products.js -->
+    <a class="cat-tab" data-cat="rice" href="#">🌾 Rice</a>
+    <a class="cat-tab" data-cat="dhal" href="#">🫘 Dhal & Sweeteners</a>
+    <a class="cat-tab" data-cat="pickles" href="#">🫙 Pickles</a>
+    <a class="cat-tab" data-cat="flours" href="#">🌿 Flours</a>
+    <a class="cat-tab" data-cat="tea" href="#">🌸 Tea</a>
   </div>
 </nav>
 
-<!-- HERO BANNER -->
+<!-- HERO -->
 <section class="hero" id="heroSection">
   <div class="hero-content">
     <p class="hero-badge">🌿 Direct Farm to Doorstep</p>
     <h1>Taste the Purity of<br><span>Traditional Grains</span></h1>
-    <p class="hero-sub">Organically cultivated heirloom varieties, ancient grains, cold-pressed oils, and traditional condiments — straight from our family farm.</p>
+    <p class="hero-sub">Organically cultivated heirloom varieties, ancient grains, and traditional condiments — straight from our family farm.</p>
     <a href="#products" class="btn-hero">Shop Now →</a>
   </div>
   <div class="hero-img-area">
-    <img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9b1c2?w=600&q=80" alt="Farm fresh grains" class="hero-img">
+    <img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9b1c2?w=600&q=80" alt="Farm fresh grains" class="hero-img" onerror="this.style.display='none'">
   </div>
 </section>
 
-<!-- SEARCH RESULTS BANNER (hidden normally) -->
-<div class="search-results-bar" id="searchResultsBar" style="display:none">
-  <div class="container">
-    <span id="searchResultsText"></span>
-    <button onclick="clearSearch()">✕ Clear Search</button>
-  </div>
-</div>
-
-<!-- PRODUCTS SECTION -->
+<!-- PRODUCTS -->
 <main class="products-section" id="products">
   <div class="container">
     <div id="categoryTitle" class="section-title">All Products</div>
-    <div class="products-grid" id="productsGrid">
-      <!-- Injected by JS -->
-    </div>
+    <div class="products-grid" id="productsGrid"></div>
     <div class="empty-state" id="emptyState" style="display:none">
       <div class="empty-icon">🔍</div>
-      <p>No products found matching your search.</p>
+      <p>No products found.</p>
     </div>
   </div>
 </main>
+
+<!-- PRODUCT DETAIL (hidden by default) -->
+<div id="detailPage" style="display:none">
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <a href="#" onclick="showHome()">Home</a><span>›</span>
+      <a href="#" id="breadcrumbCat" onclick="showHome()">Products</a><span>›</span>
+      <span id="breadcrumbName"></span>
+    </div>
+  </div>
+  <main class="product-detail-page">
+    <div class="container">
+      <div class="product-detail-grid" id="detailGrid"></div>
+      <div class="related-section">
+        <h2 class="section-title">More from this Category</h2>
+        <div class="products-grid" id="relatedGrid"></div>
+      </div>
+    </div>
+  </main>
+</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -119,11 +288,11 @@
     </div>
     <div class="footer-col">
       <h4>Categories</h4>
-      <a href="#" data-cat="rice" class="footer-cat-link">Rice</a>
-      <a href="#" data-cat="dhal" class="footer-cat-link">Dhal & Sweeteners</a>
-      <a href="#" data-cat="pickles" class="footer-cat-link">Pickles</a>
-      <a href="#" data-cat="flours" class="footer-cat-link">Flours</a>
-      <a href="#" data-cat="tea" class="footer-cat-link">Tea</a>
+      <a href="#" onclick="setCategory('rice')">Rice</a>
+      <a href="#" onclick="setCategory('dhal')">Dhal & Sweeteners</a>
+      <a href="#" onclick="setCategory('pickles')">Pickles</a>
+      <a href="#" onclick="setCategory('flours')">Flours</a>
+      <a href="#" onclick="setCategory('tea')">Tea</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
@@ -132,31 +301,19 @@
       <p>📍 Tamil Nadu, India</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 FarmFreshGrains. All rights reserved. | Lovingly grown & packed.</p>
-  </div>
+  <div class="footer-bottom"><p>© 2025 FarmFreshGrains. All rights reserved.</p></div>
 </footer>
 
 <!-- CART SIDEBAR -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-sidebar" id="cartSidebar">
-  <div class="cart-header">
-    <h3>Your Cart</h3>
-    <button onclick="toggleCart()" class="cart-close">✕</button>
-  </div>
+  <div class="cart-header"><h3>Your Cart</h3><button onclick="toggleCart()" class="cart-close">✕</button></div>
   <div class="cart-body" id="cartBody">
-    <div class="cart-empty" id="cartEmpty">
-      <div style="font-size:48px">🛒</div>
-      <p>Your cart is empty</p>
-      <small>Add some farm-fresh items!</small>
-    </div>
+    <div class="cart-empty" id="cartEmpty"><div style="font-size:48px">🛒</div><p>Your cart is empty</p><small>Add some farm-fresh items!</small></div>
     <div id="cartItems"></div>
   </div>
   <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="cart-total">
-      <span>Total:</span>
-      <strong id="cartTotal">₹0</strong>
-    </div>
+    <div class="cart-total"><span>Total:</span><strong id="cartTotal">₹0</strong></div>
     <button class="btn-checkout">Proceed to Checkout →</button>
   </div>
 </div>
@@ -170,36 +327,456 @@
       <button class="modal-tab" onclick="switchTab('register')">Register</button>
     </div>
     <div id="loginForm">
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="you@example.com" id="loginEmail">
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" placeholder="••••••••" id="loginPassword">
-      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••"></div>
       <button class="btn-primary full-width" onclick="doLogin()">Login to Account</button>
-      <p class="form-link">Forgot password? <a href="#">Reset here</a></p>
     </div>
     <div id="registerForm" style="display:none">
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" placeholder="Your name" id="regName">
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="you@example.com" id="regEmail">
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" placeholder="Create a password" id="regPassword">
-      </div>
+      <div class="form-group"><label>Full Name</label><input type="text" id="regName" placeholder="Your name"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="regEmail" placeholder="you@example.com"></div>
+      <div class="form-group"><label>Password</label><input type="password" id="regPassword" placeholder="Create a password"></div>
       <button class="btn-primary full-width" onclick="doRegister()">Create Account</button>
     </div>
   </div>
 </div>
 
-<script src="js/products.js"></script>
-<script src="js/app.js"></script>
+<script>
+// ═══════════════════════════════════════
+//  ALL PRODUCT DATA — EDIT THIS SECTION
+//  to add/remove items, change prices,
+//  update images, or mark as sold out
+// ═══════════════════════════════════════
+const PRODUCTS = {
+  rice: { label:"Rice", icon:"🌾", items:[
+    { id:"R001", name:"Ponni Raw Rice", inr:85, usd:3.50, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/White-rice.jpg/480px-White-rice.jpg",
+      description:"Ponni Raw Rice is a premium short-grain variety grown in the fertile river delta regions of Tamil Nadu. Known for its soft texture and distinct aroma when cooked, it is a staple in South Indian households.",
+      uses:"Ideal for everyday cooking, plain rice, lemon rice, curd rice, and South Indian rice dishes. Pairs beautifully with sambar, rasam, and curries." },
+    { id:"R002", name:"Ponni Boiled Rice", inr:80, usd:3.20, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ponni_boiled_rice_on_a_red_clay_pot.jpg/480px-Ponni_boiled_rice_on_a_red_clay_pot.jpg",
+      description:"Ponni Boiled Rice is parboiled before milling, retaining more nutrients compared to raw rice. It has a slightly firm texture and is highly digestible.",
+      uses:"Perfect for daily meals, idli batter, rice porridge (kanji), and traditional South Indian cooking. Widely consumed for its nutritional benefits." },
+    { id:"R003", name:"Sona Masoori Rice", inr:90, usd:3.80, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Sona_Masoori_Rice.jpg/480px-Sona_Masoori_Rice.jpg",
+      description:"Sona Masoori is a lightweight, aromatic medium-grain rice cultivated in Andhra Pradesh and Telangana. It is low in starch and easy to cook.",
+      uses:"Great for everyday cooking, fried rice, biryani, sweet pongal, and idli batter. Loved for its fluffy, non-sticky texture." },
+    { id:"R004", name:"Basmati Rice", inr:140, usd:5.50, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Beras_Basmati.jpg/480px-Beras_Basmati.jpg",
+      description:"Premium long-grain Basmati rice with a distinctive fragrance and elegant slender grains. Aged for optimal texture and aroma.",
+      uses:"Perfect for biryani, pulao, dum rice dishes, and all festive preparations. The grains elongate beautifully on cooking." },
+    { id:"R005", name:"Maappillai Sambha", inr:160, usd:6.50, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/A_closeup_of_Mapillai_samba_rice.JPG/480px-A_closeup_of_Mapillai_samba_rice.JPG",
+      description:"An ancient Tamil heirloom variety traditionally given to grooms for strength and vitality. Rich in iron, zinc, and antioxidants.",
+      uses:"Used in rice dishes, porridges, and health tonics. Known for its energy-boosting properties and nutty flavour. A treasured traditional variety." },
+    { id:"R006", name:"Black Kavuni Rice", inr:200, usd:8.00, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Black_rice_on_white.jpg/480px-Black_rice_on_white.jpg",
+      description:"Black Kavuni Rice is a rare, nutrient-dense heirloom variety with a striking deep purple-black colour. Rich in anthocyanins and antioxidants.",
+      uses:"Used in desserts like payasam, rice pudding, and health bowls. Excellent for diabetics and those seeking antioxidant-rich food." },
+    { id:"R007", name:"Seeraga Samba Rice", inr:130, usd:5.20, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/A_closeup_of_Seeraga_samba_rice.JPG/480px-A_closeup_of_Seeraga_samba_rice.JPG",
+      description:"Seeraga Samba is a tiny, aromatic short-grain rice known as the 'king of rice' in Tamil Nadu. Its grains resemble cumin seeds in shape.",
+      uses:"The traditional choice for authentic Tamil biryani, especially the famous Ambur and Dindigul styles. Also used for pulao and special rice dishes." },
+    { id:"R008", name:"Idly Rice", inr:75, usd:3.00, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Idli_rice.jpg/480px-Idli_rice.jpg",
+      description:"Specially selected parboiled rice with high starch content designed for making soft, fluffy idlis. Sourced from dedicated paddy cultivation.",
+      uses:"Primary ingredient for idli and dosa batter. Produces the softest idlis when combined with urad dal. A kitchen essential for South Indian households." }
+  ]},
+  dhal: { label:"Dhal & Sweeteners", icon:"🫘", items:[
+    { id:"D001", name:"Urad Gota", inr:180, usd:7.20, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Urad_beans.jpg/480px-Urad_beans.jpg",
+      description:"Whole white urad (black gram) with the skin removed. High in protein and a rich source of dietary fibre. Carefully cleaned and processed on our farm.",
+      uses:"Essential for idli and dosa batter. Also used in dal makhani, vada, papad, and various South Indian and North Indian preparations." },
+    { id:"D002", name:"Moong Dal", inr:160, usd:6.50, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Mung_beans_small.jpg/480px-Mung_beans_small.jpg",
+      description:"Split yellow moong dal — light, easily digestible, and packed with protein. Grown organically on our farmland.",
+      uses:"Used in dal, khichdi, payasam, pesarattu, soups, and baby food. Highly recommended for its digestibility and nutritional value." },
+    { id:"D003", name:"Palm Jaggery (Sillu Karupatti)", inr:220, usd:9.00, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Palm_jaggery.jpg/480px-Palm_jaggery.jpg",
+      description:"Traditional Sillu Karupatti made from the sap of Palmyra palm trees. Unrefined, chemical-free, and packed with minerals.",
+      uses:"Used in payasam, coffee, tea, and traditional sweets. Rich in iron and potassium. An excellent sugar substitute with a distinctive smoky-caramel flavour." },
+    { id:"D004", name:"Raw Cane Jaggery Powder", inr:120, usd:5.00, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Jaggery_powder.jpg/480px-Jaggery_powder.jpg",
+      description:"Finely powdered raw cane jaggery, unrefined and free from chemicals. Retains natural molasses and minerals unlike processed white sugar.",
+      uses:"Convenient for baking, beverages, desserts, and everyday cooking as a healthier sweetener replacement. Dissolves easily in liquids." },
+    { id:"D005", name:"Jaggery Ball", inr:100, usd:4.00, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jaggery.jpg/480px-Jaggery.jpg",
+      description:"Traditional round jaggery balls made from pure sugarcane juice. No additives, no preservatives — just pure natural sweetness.",
+      uses:"Used in traditional sweets, pongal, payasam, and as a natural energy snack. Excellent for digestive health and as a sugar alternative." }
+  ]},
+  pickles: { label:"Pickles", icon:"🫙", items:[
+    { id:"P001", name:"Tomato Pickle", inr:180, usd:7.50, unit:"250g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Tomato_je_rouge.jpg/480px-Tomato_je_rouge.jpg",
+      description:"Tangy, spicy tomato pickle made from fresh farm tomatoes, sesame oil, and a blend of traditional spices. No artificial preservatives.",
+      uses:"A perfect accompaniment for rice, idli, dosa, roti, and curd rice. Adds a burst of flavour to any meal." },
+    { id:"P002", name:"Mango Pickle", inr:200, usd:8.00, unit:"250g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Avakaya.jpg/480px-Avakaya.jpg",
+      description:"Classic South Indian raw mango pickle prepared with raw green mangoes, mustard, fenugreek, and red chillies in traditional gingelly oil.",
+      uses:"A beloved condiment for rice, curd rice, parathas, and any Indian meal. Its tangy-spicy profile is irresistible." },
+    { id:"P003", name:"Lemon Pickle", inr:190, usd:7.80, unit:"250g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Nimbu_ka_Achar_%28Lemon_Pickle%29.jpg/480px-Nimbu_ka_Achar_%28Lemon_Pickle%29.jpg",
+      description:"Sun-dried lemon pickle with a perfect balance of tartness, spice, and salt. Made using traditional recipes passed down through generations.",
+      uses:"Excellent with curd rice, dal rice, and Indian breads. Also used as a digestive aid and appetite stimulant." },
+    { id:"P004", name:"Citron Pickle", inr:210, usd:8.50, unit:"250g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Citrus_medica_Villardebelle.jpg/480px-Citrus_medica_Villardebelle.jpg",
+      description:"Narthangai (citron) pickle made from the prized citron fruit. A rare traditional pickle with a unique bitter-tart flavour profile.",
+      uses:"A traditional remedy for digestive issues. Served with rice and curries. Known for its medicinal properties and distinctive taste." },
+    { id:"P005", name:"Amla Pickle", inr:170, usd:7.00, unit:"250g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Indian_gooseberry.jpg/480px-Indian_gooseberry.jpg",
+      description:"Indian gooseberry (amla) pickle with traditional spices. Amla is a superfood rich in Vitamin C and antioxidants.",
+      uses:"An immunity-boosting condiment for rice and Indian breads. Valued for its health benefits including hair and skin nourishment." }
+  ]},
+  flours: { label:"Flours", icon:"🌿", items:[
+    { id:"F001", name:"Ragi Flour", inr:95, usd:3.80, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Finger_millet.jpg/480px-Finger_millet.jpg",
+      description:"Stone-ground finger millet (ragi) flour from our own farm cultivation. Rich in calcium, iron, and dietary fibre. 100% natural with no additives.",
+      uses:"Used for ragi mudde, roti, dosa, porridge (kanji), and health drinks. Excellent for bone health, weight management, and diabetic diets." },
+    { id:"F002", name:"Rice Flour", inr:70, usd:2.80, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Rice-flour.jpg/480px-Rice-flour.jpg",
+      description:"Fine-ground raw rice flour milled from premium rice varieties. Silky smooth texture, naturally gluten-free.",
+      uses:"Used for puttu, kozhukattai, murukku, rice papads, and various traditional snacks and sweets. A versatile gluten-free flour." },
+    { id:"F003", name:"Puttu Flour", inr:80, usd:3.20, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Puttu_with_kadala_curry.jpg/480px-Puttu_with_kadala_curry.jpg",
+      description:"Specially milled and lightly roasted rice flour with the perfect coarseness for making authentic Kerala-style puttu. Stone-milled for best texture.",
+      uses:"The essential ingredient for making traditional puttu (steamed rice cylinders) served with kadala curry or banana. A breakfast staple." },
+    { id:"F004", name:"Karupukavuni Flour", inr:220, usd:9.00, unit:"kg", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Black_rice_on_white.jpg/480px-Black_rice_on_white.jpg",
+      description:"Stone-ground flour from Black Kavuni (forbidden black rice). Deep purple in colour, extraordinarily rich in antioxidants and anthocyanins.",
+      uses:"Used for healthy rotis, black rice payasam, porridge, and health drinks. Excellent for antioxidant benefits and a stunning natural colour in food." }
+  ]},
+  tea: { label:"Tea", icon:"🌸", items:[
+    { id:"T001", name:"Sangu Poo", inr:250, usd:10.00, unit:"100g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Clitoria_ternatea_flowers.jpg/480px-Clitoria_ternatea_flowers.jpg",
+      description:"Dried butterfly pea flowers (Sangu Poo) — a stunning blue herbal tea flower with powerful antioxidant properties. Naturally sun-dried, no preservatives.",
+      uses:"Brewed as a vivid blue herbal tea that turns purple with lemon. Improves memory, reduces stress, and supports eye health. Also used as a natural food colouring." },
+    { id:"T002", name:"Aavaram Poo", inr:200, usd:8.00, unit:"100g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Senna_auriculata.jpg/480px-Senna_auriculata.jpg",
+      description:"Dried Aavaram (Tanner's Cassia / Senna auriculata) flowers. A time-honoured medicinal flower used in Siddha and Ayurvedic medicine for centuries.",
+      uses:"Brewed as tea for managing blood sugar levels, improving skin complexion, and supporting kidney health. A traditional wellness tea of South India." },
+    { id:"T003", name:"Chambarathi Poo", inr:180, usd:7.50, unit:"100g", soldOut:false,
+      image:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Hibiscus_rosa-sinensis_closeup.jpg/480px-Hibiscus_rosa-sinensis_closeup.jpg",
+      description:"Dried hibiscus flowers (Chambarathi) with a deep ruby-red colour and tangy floral aroma. Rich in Vitamin C and natural antioxidants.",
+      uses:"Brewed as a bright crimson herbal tea. Known for supporting heart health, reducing blood pressure, and aiding weight management. Also used in coolers and lemonades." }
+  ]}
+};
+
+// ═══════════════════════════════════════
+//  APP STATE & LOGIC
+// ═══════════════════════════════════════
+let currentCurrency = 'INR';
+let cart = JSON.parse(localStorage.getItem('ffg_cart')||'[]');
+let currentUser = JSON.parse(localStorage.getItem('ffg_user')||'null');
+let currentDetailId = null;
+
+// Currency detect
+async function detectCurrency(){
+  try{
+    const r = await fetch('https://ipapi.co/json/');
+    const d = await r.json();
+    currentCurrency = (d.country_code==='IN')?'INR':'USD';
+  }catch(e){ currentCurrency='INR'; }
+  document.getElementById('currencyFlag').textContent = currentCurrency==='INR'?'🇮🇳':'🇺🇸';
+  document.getElementById('currencyLabel').textContent = currentCurrency;
+  renderProducts('all');
+  updateCartUI();
+}
+
+function formatPrice(item){
+  if(currentCurrency==='INR') return '₹'+item.inr;
+  return '$'+item.usd.toFixed(2);
+}
+
+function getAllItems(){
+  let all=[];
+  Object.entries(PRODUCTS).forEach(([k,cat])=>cat.items.forEach(i=>all.push({...i,_cat:k})));
+  return all;
+}
+
+function getItem(id){
+  for(const cat of Object.values(PRODUCTS)){
+    const f=cat.items.find(i=>i.id===id);
+    if(f) return f;
+  }
+  return null;
+}
+
+function getCatKey(id){
+  for(const [k,cat] of Object.entries(PRODUCTS)){
+    if(cat.items.find(i=>i.id===id)) return k;
+  }
+  return 'all';
+}
+
+// Render
+function renderProducts(catKey){
+  const grid=document.getElementById('productsGrid');
+  const empty=document.getElementById('emptyState');
+  let items = catKey==='all' ? getAllItems() : (PRODUCTS[catKey]?.items||[]).map(i=>({...i,_cat:catKey}));
+  if(!items.length){ grid.innerHTML=''; empty.style.display='flex'; return; }
+  empty.style.display='none';
+  grid.innerHTML=items.map(item=>cardHTML(item)).join('');
+}
+
+function cardHTML(item){
+  const cat=item._cat||getCatKey(item.id);
+  const catLabel=PRODUCTS[cat]?.label||'';
+  const sold=item.soldOut;
+  return `<div class="product-card${sold?' sold-out':''}" onclick="${sold?'':'goToDetail(\''+item.id+'\')'}" style="cursor:${sold?'default':'pointer'}">
+    <div class="product-img-wrap">
+      <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.src='https://placehold.co/480x360/d8f3dc/1b4332?text=${encodeURIComponent(item.name)}'">
+      ${sold?'<div class="sold-out-badge">Sold Out</div>':''}
+      <div class="product-cat-tag">${catLabel}</div>
+    </div>
+    <div class="product-info">
+      <p class="product-id">Item #${item.id}</p>
+      <h3 class="product-name">${item.name}</h3>
+      <p class="product-desc-short">${item.description.substring(0,80)}…</p>
+      <div class="product-footer">
+        <div>${sold?'<span class="price-sold">Sold Out</span>':`<span class="price-main">${formatPrice(item)}</span><span class="price-unit"> / ${item.unit}</span>`}</div>
+        ${sold?'':'<button class="btn-add-card" onclick="event.stopPropagation();quickAdd(\''+item.id+'\')">+ Add</button>'}
+      </div>
+    </div>
+  </div>`;
+}
+
+// Category tabs
+function setCategory(catKey){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===catKey));
+  document.getElementById('heroSection').style.display=catKey==='all'?'':'none';
+  document.getElementById('categoryTitle').textContent=catKey==='all'?'All Products':(PRODUCTS[catKey]?.icon+' '+PRODUCTS[catKey]?.label||'');
+  showHome();
+  renderProducts(catKey);
+  document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+document.querySelectorAll('.cat-tab').forEach(tab=>{
+  tab.addEventListener('click',e=>{e.preventDefault();setCategory(tab.dataset.cat);});
+});
+
+// Detail page
+function goToDetail(id){
+  currentDetailId=id;
+  const item=getItem(id);
+  if(!item) return;
+  document.getElementById('products').style.display='none';
+  document.getElementById('heroSection').style.display='none';
+  document.getElementById('detailPage').style.display='block';
+  document.getElementById('breadcrumbName').textContent=item.name;
+  const catKey=getCatKey(id);
+  document.getElementById('breadcrumbCat').textContent=PRODUCTS[catKey]?.label||'Products';
+  renderDetail(item,catKey);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showHome(){
+  document.getElementById('products').style.display='';
+  document.getElementById('detailPage').style.display='none';
+}
+
+function renderDetail(item,catKey){
+  const sold=item.soldOut;
+  document.getElementById('detailGrid').innerHTML=`
+    <div>
+      <div class="detail-img-wrap${sold?' sold-out':''}">
+        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/600x450/d8f3dc/1b4332?text=${encodeURIComponent(item.name)}'">
+        ${sold?'<div class="sold-out-overlay">SOLD OUT</div>':''}
+      </div>
+      <div class="detail-badges">
+        <span class="badge badge-green">🌿 100% Natural</span>
+        <span class="badge badge-amber">🚜 Farm Direct</span>
+        <span class="badge badge-brown">🧪 No Preservatives</span>
+      </div>
+    </div>
+    <div>
+      <p class="detail-item-id">Item #${item.id} · ${PRODUCTS[catKey]?.label||''}</p>
+      <h1 class="detail-name">${item.name}</h1>
+      <div class="detail-price-row">
+        ${sold?'<div class="detail-price sold-out-price">Sold Out</div>':`<div class="detail-price" id="detailPriceEl">${formatPrice(item)}</div><div class="detail-unit">per ${item.unit}</div>`}
+      </div>
+      <div class="detail-description"><h3>Description</h3><p>${item.description}</p></div>
+      <div class="detail-uses"><h3>Uses & Benefits</h3><p>${item.uses}</p></div>
+      ${sold?`<div class="sold-out-notice"><span>⚠️ Currently out of stock.</span><p>Please check back later or explore our other products.</p><button class="btn-primary" onclick="showHome()" style="margin-top:12px">Browse All Products</button></div>`:`
+      <div class="detail-add-cart">
+        <div class="qty-selector">
+          <button class="qty-btn" onclick="chgQty(-1)">−</button>
+          <input type="number" id="qtyInput" value="1" min="1" max="99" oninput="updSubtotal('${item.id}')">
+          <button class="qty-btn" onclick="chgQty(1)">+</button>
+        </div>
+        <div class="detail-total-row">Subtotal: <strong id="subtotalEl">${formatPrice(item)}</strong></div>
+        <button class="btn-add-to-cart" onclick="detailAdd('${item.id}')">🛒 Add to Cart</button>
+        <button class="btn-buy-now" onclick="detailAdd('${item.id}');toggleCart()">⚡ Buy Now</button>
+      </div>`}
+      <div style="margin-top:16px">
+        <span class="delivery-chip">🚚 Free delivery above ₹500 / $25</span>
+        <span class="delivery-chip">🔄 Easy returns</span>
+        <span class="delivery-chip">🌱 Farm certified</span>
+      </div>
+    </div>`;
+
+  // Related
+  const related=(PRODUCTS[catKey]?.items||[]).filter(i=>i.id!==item.id).slice(0,4).map(i=>({...i,_cat:catKey}));
+  document.getElementById('relatedGrid').innerHTML=related.map(i=>cardHTML(i)).join('');
+}
+
+function chgQty(d){
+  const inp=document.getElementById('qtyInput');
+  if(!inp) return;
+  let v=parseInt(inp.value)+d;
+  if(v<1)v=1; if(v>99)v=99;
+  inp.value=v;
+  if(currentDetailId) updSubtotal(currentDetailId);
+}
+
+function updSubtotal(id){
+  const item=getItem(id);
+  if(!item) return;
+  const qty=parseInt(document.getElementById('qtyInput')?.value)||1;
+  const price=currentCurrency==='INR'?item.inr*qty:item.usd*qty;
+  const el=document.getElementById('subtotalEl');
+  if(el) el.textContent=currentCurrency==='INR'?'₹'+price:'$'+price.toFixed(2);
+}
+
+function detailAdd(id){
+  const qty=parseInt(document.getElementById('qtyInput')?.value)||1;
+  addToCart(id,qty);
+  const item=getItem(id);
+  showToast('✅ '+qty+'× '+item.name+' added to cart!');
+}
+
+// CART
+function quickAdd(id){
+  addToCart(id,1);
+  showToast('✅ '+getItem(id).name+' added!');
+}
+
+function addToCart(id,qty){
+  const e=cart.find(c=>c.id===id);
+  if(e) e.qty+=qty; else cart.push({id,qty});
+  localStorage.setItem('ffg_cart',JSON.stringify(cart));
+  updateCartUI();
+}
+
+function removeFromCart(id){
+  cart=cart.filter(c=>c.id!==id);
+  localStorage.setItem('ffg_cart',JSON.stringify(cart));
+  updateCartUI();
+}
+
+function updateCartQty(id,qty){
+  if(qty<1){removeFromCart(id);return;}
+  const e=cart.find(c=>c.id===id);
+  if(e) e.qty=qty;
+  localStorage.setItem('ffg_cart',JSON.stringify(cart));
+  updateCartUI();
+}
+
+function updateCartUI(){
+  const total=cart.reduce((s,c)=>s+c.qty,0);
+  const countEl=document.getElementById('cartCount');
+  if(countEl){countEl.textContent=total;countEl.style.display=total>0?'flex':'none';}
+  const itemsEl=document.getElementById('cartItems');
+  const emptyEl=document.getElementById('cartEmpty');
+  const footerEl=document.getElementById('cartFooter');
+  const totalEl=document.getElementById('cartTotal');
+  if(!itemsEl) return;
+  if(!cart.length){itemsEl.innerHTML='';if(emptyEl)emptyEl.style.display='flex';if(footerEl)footerEl.style.display='none';return;}
+  if(emptyEl)emptyEl.style.display='none';
+  if(footerEl)footerEl.style.display='block';
+  let grandTotal=0;
+  itemsEl.innerHTML=cart.map(ci=>{
+    const item=getItem(ci.id);
+    if(!item) return '';
+    const price=(currentCurrency==='INR'?item.inr:item.usd)*ci.qty;
+    grandTotal+=price;
+    return `<div class="cart-item">
+      <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/64x64/d8f3dc/1b4332?text=FFG'">
+      <div class="cart-item-info">
+        <p class="cart-item-name">${item.name}</p>
+        <p class="cart-item-price">${formatPrice(item)} / ${item.unit}</p>
+        <div class="cart-qty-row">
+          <button onclick="updateCartQty('${item.id}',${ci.qty-1})">−</button>
+          <span>${ci.qty}</span>
+          <button onclick="updateCartQty('${item.id}',${ci.qty+1})">+</button>
+          <button class="cart-remove" onclick="removeFromCart('${item.id}')">🗑</button>
+        </div>
+      </div>
+      <div class="cart-item-total">${currentCurrency==='INR'?'₹'+price:'$'+price.toFixed(2)}</div>
+    </div>`;
+  }).join('');
+  if(totalEl) totalEl.textContent=currentCurrency==='INR'?'₹'+grandTotal:'$'+grandTotal.toFixed(2);
+}
+
+function toggleCart(){
+  document.getElementById('cartSidebar').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('visible');
+}
+
+// LOGIN
+function updateLoginUI(){
+  const l=document.getElementById('loginLabel');
+  if(l) l.textContent=currentUser?currentUser.name.split(' ')[0]:'Login';
+}
+
+function openLoginModal(){document.getElementById('loginModal').style.display='flex';}
+function closeLoginModal(){document.getElementById('loginModal').style.display='none';}
+function switchTab(t){
+  document.getElementById('loginForm').style.display=t==='login'?'block':'none';
+  document.getElementById('registerForm').style.display=t==='register'?'block':'none';
+  document.querySelectorAll('.modal-tab').forEach((el,i)=>el.classList.toggle('active',(i===0&&t==='login')||(i===1&&t==='register')));
+}
+function doLogin(){
+  const email=document.getElementById('loginEmail').value;
+  const pass=document.getElementById('loginPassword').value;
+  if(!email||!pass){showToast('Please fill all fields','error');return;}
+  const user={name:email.split('@')[0],email};
+  localStorage.setItem('ffg_user',JSON.stringify(user));
+  currentUser=user; updateLoginUI(); closeLoginModal();
+  showToast('Welcome back, '+user.name+'! 👋');
+}
+function doRegister(){
+  const name=document.getElementById('regName').value;
+  const email=document.getElementById('regEmail').value;
+  const pass=document.getElementById('regPassword').value;
+  if(!name||!email||!pass){showToast('Please fill all fields','error');return;}
+  const user={name,email};
+  localStorage.setItem('ffg_user',JSON.stringify(user));
+  currentUser=user; updateLoginUI(); closeLoginModal();
+  showToast('Welcome, '+name+'! Account created 🎉');
+}
+
+// TOAST
+function showToast(msg,type='success'){
+  let t=document.getElementById('ffg-toast');
+  if(!t){t=document.createElement('div');t.id='ffg-toast';t.className='ffg-toast';document.body.appendChild(t);}
+  t.textContent=msg; t.className='ffg-toast show '+(type||'');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// SEARCH
+document.getElementById('searchInput').addEventListener('input',function(){
+  const q=this.value.trim().toLowerCase();
+  if(!q){renderProducts('all');document.getElementById('categoryTitle').textContent='All Products';return;}
+  const results=getAllItems().filter(i=>i.name.toLowerCase().includes(q)||i.description.toLowerCase().includes(q));
+  document.getElementById('categoryTitle').textContent='Search: "'+this.value+'"';
+  document.getElementById('heroSection').style.display='none';
+  const grid=document.getElementById('productsGrid');
+  const empty=document.getElementById('emptyState');
+  if(!results.length){grid.innerHTML='';empty.style.display='flex';return;}
+  empty.style.display='none';
+  grid.innerHTML=results.map(i=>cardHTML(i)).join('');
+});
+
+// Event listeners
+document.getElementById('loginBtn').addEventListener('click',()=>{
+  if(currentUser){if(confirm('Logged in as '+currentUser.name+'\n\nClick OK to logout.')){localStorage.removeItem('ffg_user');currentUser=null;updateLoginUI();showToast('Logged out');}}
+  else openLoginModal();
+});
+document.getElementById('cartBtn').addEventListener('click',toggleCart);
+
+// INIT
+detectCurrency();
+renderProducts('all');
+updateCartUI();
+updateLoginUI();
+</script>
 </body>
 </html>
